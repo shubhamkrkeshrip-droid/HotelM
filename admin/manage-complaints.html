@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Complaints - Admin</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel Admin</span>
+                </a>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header"><h3>Admin Panel</h3></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="manage-rooms.html"><i class="fas fa-bed"></i> Manage Rooms</a></li>
+                <li><a href="manage-reservations.html"><i class="fas fa-calendar-check"></i> Manage Reservations</a></li>
+                <li><a href="manage-customers.html"><i class="fas fa-users"></i> Manage Customers</a></li>
+                <li><a href="manage-staff.html"><i class="fas fa-user-tie"></i> Manage Staff</a></li>
+                <li><a href="manage-bills.html"><i class="fas fa-file-invoice-dollar"></i> Manage Bills</a></li>
+                <li><a href="manage-complaints.html" class="active"><i class="fas fa-comment-dots"></i> Manage Complaints</a></li>
+                <li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Manage Customer Complaints</h1>
+
+        <div class="info-banner">
+            <i class="fas fa-info-circle"></i>
+            Complaints are automatically assigned to staff based on category. Resolution SLA: 24 hours.
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+
+            <div class="form-group">
+                <label for="complaintStatusFilter">Status</label>
+                <select id="complaintStatusFilter" name="complaintStatusFilter">
+                    <option value="">All Status</option>
+                    <option value="open">Open</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="resolved">Resolved</option>
+                    <option value="closed">Closed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="complaintCategoryFilter">Category</label>
+                <select id="complaintCategoryFilter" name="complaintCategoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Room Issue">Room Issue</option>
+                    <option value="Service Issue">Service Issue</option>
+                    <option value="Billing Issue">Billing Issue</option>
+                    <option value="Housekeeping">Housekeeping</option>
+                    <option value="Food & Beverage">Food & Beverage</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="assignedStaffFilter">Assigned Staff</label>
+                <select id="assignedStaffFilter" name="assignedStaffFilter">
+                    <option value="">All Staff</option>
+                </select>
+            </div>
+
+            <button onclick="filterComplaints()" class="btn btn-primary">Filter</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table id="complaintsTable">
+                <thead>
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Customer</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th>Submitted</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="viewComplaintModal" class="modal">
+    <div class="modal-content modal-lg">
+
+        <span class="close" onclick="closeComplaintModal()">&times;</span>
+
+        <h3>Complaint Details</h3>
+
+        <div id="complaintFullDetails"></div>
+
+        <form id="complaintResponseForm">
+
+            <div class="form-group">
+                <label for="assignStaff">Assign To *</label>
+                <select id="assignStaff" name="assignStaff" required>
+                    <option value="" disabled selected>Select Staff</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="updateStatus">Update Status</label>
+                <select id="updateStatus" name="updateStatus">
+                    <option value="open">Open</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="resolved">Resolved</option>
+                    <option value="closed">Closed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="responseMessage">Response Message</label>
+                <textarea id="responseMessage" name="responseMessage" rows="3"
+                    placeholder="Add response or resolution notes..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Complaint</button>
+
+        </form>
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin.js"></script>
+
+</body>
+</html>

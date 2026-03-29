@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Grand Hotel</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel</span>
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="search-rooms.html">Book Room</a></li>
+                <li><a href="booking-history.html">My Bookings</a></li>
+                <li><a href="complaints.html">Register Complaint</a></li>
+                <li><a href="track-complaints.html">Track Complaints</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+    <div class="main-content">
+
+        <div class="profile-container">
+            <h1>My Profile</h1>
+
+            <div class="profile-card">
+
+                <div class="profile-header">
+                    <i class="fas fa-user-circle"></i>
+                    <h3 id="profileName"></h3>
+                    <p>Member since <span id="memberSince"></span></p>
+                </div>
+
+                <form id="profileForm">
+
+                    <div class="form-group">
+                        <label for="fullName"><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile"><i class="fas fa-phone"></i> Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" readonly>
+                        <small>Mobile number cannot be changed</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender"><i class="fas fa-venus-mars"></i> Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age"><i class="fas fa-calendar"></i> Age</label>
+                        <input type="number" id="age" name="age" min="18" max="120">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address"><i class="fas fa-map-marker-alt"></i> Address</label>
+                        <textarea id="address" name="address" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user-circle"></i> Username</label>
+                        <input type="text" id="username" name="username" readonly>
+                        <small>Username cannot be changed</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" onclick="changePassword()" class="btn btn-outline">Change Password</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- PASSWORD MODAL -->
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closePasswordModal()">&times;</span>
+        <h3>Change Password</h3>
+
+        <form id="changePasswordForm">
+
+            <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" name="currentPassword" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Password</button>
+
+        </form>
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/customer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Grand Hotel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-box">
+            <div class="payment-header">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel</span>
+                </a>
+                <h2>Secure Payment</h2>
+                <p>Complete your booking with secure payment</p>
+            </div>
+            
+            <div class="booking-summary" id="bookingSummary"></div>
+            
+            <div class="payment-methods">
+                <h3>Select Payment Method</h3>
+                <div class="method-options">
+                    <label class="method-card">
+                        <input type="radio" name="paymentMethod" value="card" checked>
+                        <i class="fas fa-credit-card"></i>
+                        <span>Credit/Debit Card</span>
+                    </label>
+                    <label class="method-card">
+                        <input type="radio" name="paymentMethod" value="upi">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>UPI</span>
+                    </label>
+                    <label class="method-card">
+                        <input type="radio" name="paymentMethod" value="netbanking">
+                        <i class="fas fa-university"></i>
+                        <span>Net Banking</span>
+                    </label>
+                    <label class="method-card">
+                        <input type="radio" name="paymentMethod" value="wallet">
+                        <i class="fas fa-wallet"></i>
+                        <span>Digital Wallet</span>
+                    </label>
+                </div>
+            </div>
+            
+            <form id="cardPaymentForm" class="payment-form">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Cardholder Name</label>
+                    <input type="text" id="cardName" placeholder="Name on card" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-credit-card"></i> Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar"></i> Expiry Date</label>
+                        <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> CVV</label>
+                        <input type="password" id="cvv" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Billing Address (Optional)</label>
+                    <textarea id="billingAddress" rows="2" placeholder="Enter billing address"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block" id="payBtn">
+                    Pay $<span id="totalAmount">0</span>
+                </button>
+            </form>
+            
+            <div class="payment-security">
+                <i class="fas fa-shield-alt"></i>
+                <p>Your payment is secure with 256-bit SSL encryption</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/validation.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/booking.js"></script>
+</body>
+</html>

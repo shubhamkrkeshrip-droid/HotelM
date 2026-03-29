@@ -1,0 +1,26 @@
+<!-- FILTERS -->
+<div class="filters">
+
+    <div class="form-group">
+        <label for="statusFilter">Reservation Status</label>
+        <select id="statusFilter" name="statusFilter">
+            <option value="">All Status</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Checked-in">Checked-in</option>
+            <option value="Checked-out">Checked-out</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="dateFrom">From Date</label>
+        <input type="date" id="dateFrom" name="dateFrom">
+    </div>
+
+    <div class="form-group">
+        <label for="dateTo">To Date</label>
+        <input type="date" id="dateTo" name="dateTo">
+    </div>
+
+    <button onclick="filterReservations()" class="btn btn-outline">Apply Filters</button>
+</div>

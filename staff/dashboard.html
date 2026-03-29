@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - Grand Hotel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo"><a href="dashboard.html"><i class="fas fa-hotel"></i><span>Grand Hotel Staff</span></a></div>
+                <div class="nav-buttons"><span id="staffName"></span><button onclick="logout()" class="btn btn-outline">Logout</button></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header"><h3>Staff Panel</h3></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="manage-complaints.html"><i class="fas fa-comment-dots"></i> Manage Complaints</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <div class="welcome-section"><h1>Welcome, <span id="staffWelcomeName"></span>!</h1><p>Department: <span id="staffDepartment"></span></p></div>
+            <div class="stats-grid">
+                <div class="stat-card"><i class="fas fa-comment"></i><div class="stat-info"><h3 id="assignedComplaints">0</h3><p>Assigned Complaints</p></div></div>
+                <div class="stat-card"><i class="fas fa-spinner"></i><div class="stat-info"><h3 id="inProgressComplaints">0</h3><p>In Progress</p></div></div>
+                <div class="stat-card"><i class="fas fa-check-circle"></i><div class="stat-info"><h3 id="resolvedComplaints">0</h3><p>Resolved This Month</p></div></div>
+            </div>
+            <div class="recent-complaints"><h2>Recent Complaints Assigned to You</h2><div id="recentComplaintsList" class="complaints-list"></div></div>
+        </div>
+    </div>
+
+    <script src="../js/validation.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/staff.js"></script>
+</body>
+</html>

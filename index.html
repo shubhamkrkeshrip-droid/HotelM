@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Hotel - Luxury Stay Experience</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel</span>
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="customer/register.html" class="btn btn-primary">Register</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Grand Hotel</h1>
+        <p>Experience luxury and comfort like never before</p>
+        <a href="customer/search-rooms.html" class="btn btn-large">
+            Book Your Stay <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="amenities">
+    <div class="container">
+        <h2 class="section-title">Why Choose Us?</h2>
+
+        <div class="features-grid">
+            <div class="feature-card"><i class="fas fa-wifi"></i><h3>Free Wi-Fi</h3><p>High-speed internet throughout the hotel</p></div>
+            <div class="feature-card"><i class="fas fa-swimming-pool"></i><h3>Swimming Pool</h3><p>Temperature controlled pool</p></div>
+            <div class="feature-card"><i class="fas fa-dumbbell"></i><h3>Fitness Center</h3><p>Modern gym equipment</p></div>
+            <div class="feature-card"><i class="fas fa-utensils"></i><h3>Fine Dining</h3><p>Multi-cuisine restaurant</p></div>
+            <div class="feature-card"><i class="fas fa-spa"></i><h3>Spa & Wellness</h3><p>Relaxing spa treatments</p></div>
+            <div class="feature-card"><i class="fas fa-concierge-bell"></i><h3>24/7 Service</h3><p>Round the clock assistance</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+    <div class="container">
+        <h2 class="section-title">Our Premium Rooms</h2>
+
+        <div class="rooms-grid">
+
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=400"
+                     alt="Standard room with king bed and modern interior">
+                <div class="room-info">
+                    <h3>Standard Room</h3>
+                    <p>Comfortable room with essential amenities</p>
+                    <div class="room-price">$99 <span>/ night</span></div>
+                    <a href="customer/search-rooms.html?type=standard" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400"
+                     alt="Deluxe room with premium amenities and city view">
+                <div class="room-info">
+                    <h3>Deluxe Room</h3>
+                    <p>Spacious room with premium amenities</p>
+                    <div class="room-price">$159 <span>/ night</span></div>
+                    <a href="customer/search-rooms.html?type=deluxe" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400"
+                     alt="Luxury suite with jacuzzi and living area">
+                <div class="room-info">
+                    <h3>Executive Suite</h3>
+                    <p>Luxury suite with separate living area</p>
+                    <div class="room-price">$299 <span>/ night</span></div>
+                    <a href="customer/search-rooms.html?type=suite" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+                <h3>Grand Hotel</h3>
+                <p>Experience luxury redefined</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>📍 123 Luxury Lane, City</li>
+                    <li>📞 +1 234 567 890</li>
+                    <li>✉ info@grandhotel.com</li>
+                </ul>
+            </div>
+
+            <!-- NEWSLETTER FIXED -->
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+
+                <form id="newsletterForm">
+                    <label for="newsletterEmail">Email Address</label>
+                    <input type="email" id="newsletterEmail" name="newsletterEmail" required>
+
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Grand Hotel. All rights reserved.</p>
+        </div>
+
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

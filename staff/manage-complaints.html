@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Complaints - Staff</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel Staff</span>
+                </a>
+            </div>
+
+            <div class="nav-buttons">
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header"><h3>Staff Panel</h3></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="manage-complaints.html" class="active"><i class="fas fa-comment-dots"></i> Manage Complaints</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content">
+
+        <h1>Manage Complaints</h1>
+
+        <!-- FILTER -->
+        <div class="filters">
+
+            <label for="statusFilter">Filter by Status</label>
+
+            <select id="statusFilter" name="statusFilter">
+                <option value="">All Status</option>
+                <option value="open">Open</option>
+                <option value="in-progress">In Progress</option>
+                <option value="resolved">Resolved</option>
+                <option value="closed">Closed</option>
+            </select>
+
+            <button onclick="filterComplaints()" class="btn btn-primary">Filter</button>
+
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-container">
+            <table id="complaintsTable">
+                <thead>
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Customer</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Submitted</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!-- MODAL -->
+<div id="complaintModal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeComplaintModal()">&times;</span>
+
+        <div id="complaintDetails"></div>
+
+        <form id="updateComplaintForm">
+
+            <div class="form-group">
+                <label for="complaintStatus">Update Status</label>
+                <select id="complaintStatus" name="complaintStatus">
+                    <option value="open">Open</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="resolved">Resolved</option>
+                    <option value="closed">Closed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="resolutionNotes">Resolution Notes</label>
+                <textarea id="resolutionNotes" name="resolutionNotes" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/staff.js"></script>
+
+<script>
+function closeComplaintModal() {
+    document.getElementById("complaintModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>

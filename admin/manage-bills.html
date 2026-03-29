@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Bills - Admin</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel Admin</span>
+                </a>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header"><h3>Admin Panel</h3></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="manage-rooms.html"><i class="fas fa-bed"></i> Manage Rooms</a></li>
+                <li><a href="manage-reservations.html"><i class="fas fa-calendar-check"></i> Manage Reservations</a></li>
+                <li><a href="manage-customers.html"><i class="fas fa-users"></i> Manage Customers</a></li>
+                <li><a href="manage-staff.html"><i class="fas fa-user-tie"></i> Manage Staff</a></li>
+                <li><a href="manage-bills.html" class="active"><i class="fas fa-file-invoice-dollar"></i> Manage Bills</a></li>
+                <li><a href="manage-complaints.html"><i class="fas fa-comment-dots"></i> Manage Complaints</a></li>
+                <li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="page-header">
+            <h1>Manage Bills</h1>
+            <button onclick="showAddBillModal()" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Create Bill
+            </button>
+        </div>
+
+        <!-- Search -->
+        <div class="search-bar">
+            <input type="text" id="searchBill" placeholder="Search by Bill ID, Customer Name...">
+            <button onclick="searchBills()" class="btn btn-primary">Search</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table id="billsTable">
+                <thead>
+                    <tr>
+                        <th>Bill ID</th>
+                        <th>Customer Name</th>
+                        <th>Date</th>
+                        <th>Total Amount (₹)</th>
+                        <th>Payment Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="pagination" class="pagination"></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="addBillModal" class="modal">
+    <div class="modal-content modal-lg">
+
+        <span class="close" onclick="closeBillModal()">&times;</span>
+        <h3>Create New Bill</h3>
+
+        <form id="addBillForm">
+
+            <div class="form-group">
+                <label for="billCustomer">Customer *</label>
+                <select id="billCustomer" name="billCustomer" required>
+                    <option value="" disabled selected>Select Customer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="billBooking">Booking ID *</label>
+                <select id="billBooking" name="billBooking" required>
+                    <option value="" disabled selected>Select Booking</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="roomCharges">Room Charges (₹)</label>
+                <input type="number" id="roomCharges" name="roomCharges" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Additional Services</label>
+                <div id="servicesList"></div>
+                <button type="button" onclick="addService()" class="btn btn-small">+ Add Service</button>
+            </div>
+
+            <div class="form-group">
+                <label for="discount">Discount (%)</label>
+                <input type="number" id="discount" name="discount" value="0" min="0" max="100" step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="tax">Tax (GST 18%)</label>
+                <input type="number" id="tax" name="tax" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="totalAmount">Total Amount (₹)</label>
+                <input type="number" id="totalAmount" name="totalAmount" readonly>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Generate Bill</button>
+
+        </form>
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin.js"></script>
+
+</body>
+</html>

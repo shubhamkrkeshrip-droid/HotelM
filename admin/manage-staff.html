@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Staff - Admin</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel Admin</span>
+                </a>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header"><h3>Admin Panel</h3></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="manage-rooms.html"><i class="fas fa-bed"></i> Manage Rooms</a></li>
+                <li><a href="manage-reservations.html"><i class="fas fa-calendar-check"></i> Manage Reservations</a></li>
+                <li><a href="manage-customers.html"><i class="fas fa-users"></i> Manage Customers</a></li>
+                <li><a href="manage-staff.html" class="active"><i class="fas fa-user-tie"></i> Manage Staff</a></li>
+                <li><a href="manage-bills.html"><i class="fas fa-file-invoice-dollar"></i> Manage Bills</a></li>
+                <li><a href="manage-complaints.html"><i class="fas fa-comment-dots"></i> Manage Complaints</a></li>
+                <li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content">
+
+        <div class="page-header">
+            <h1>Manage Staff</h1>
+            <button onclick="showAddStaffModal()" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Add Staff Member
+            </button>
+        </div>
+
+        <!-- Search -->
+        <div class="search-bar">
+            <input type="text" id="searchStaff" placeholder="Search by name, email, or staff ID...">
+            <button onclick="searchStaff()" class="btn btn-primary">Search</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table id="staffTable">
+                <thead>
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ADD STAFF MODAL -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeAddStaffModal()">&times;</span>
+        <h3>Add New Staff Member</h3>
+
+        <form id="addStaffForm">
+
+            <div class="form-group">
+                <label for="staffName">Full Name *</label>
+                <input type="text" id="staffName" name="staffName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="staffEmail">Email *</label>
+                <input type="email" id="staffEmail" name="staffEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="staffMobile">Mobile Number *</label>
+                <input type="tel" id="staffMobile" name="staffMobile" required>
+            </div>
+
+            <div class="form-group">
+                <label for="staffGender">Gender</label>
+                <select id="staffGender" name="staffGender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="staffAge">Age</label>
+                <input type="number" id="staffAge" name="staffAge" min="18" max="65">
+            </div>
+
+            <div class="form-group">
+                <label for="staffDepartment">Department</label>
+                <select id="staffDepartment" name="staffDepartment" required>
+                    <option value="Housekeeping">Housekeeping</option>
+                    <option value="Front Desk">Front Desk</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Food & Beverage">Food & Beverage</option>
+                    <option value="Management">Management</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="staffRole">Role</label>
+                <select id="staffRole" name="staffRole">
+                    <option value="Staff">Staff</option>
+                    <option value="Supervisor">Supervisor</option>
+                    <option value="Manager">Manager</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="staffUsername">Username *</label>
+                <input type="text" id="staffUsername" name="staffUsername" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Staff</button>
+
+        </form>
+    </div>
+</div>
+
+<!-- EDIT STAFF MODAL -->
+<div id="editStaffModal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeEditStaffModal()">&times;</span>
+        <h3>Edit Staff Member</h3>
+
+        <form id="editStaffForm">
+            <input type="hidden" id="editStaffId" name="editStaffId">
+
+            <div class="form-group">
+                <label for="editStaffName">Full Name</label>
+                <input type="text" id="editStaffName" name="editStaffName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="editStaffEmail">Email</label>
+                <input type="email" id="editStaffEmail" name="editStaffEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="editStaffMobile">Mobile</label>
+                <input type="tel" id="editStaffMobile" name="editStaffMobile" required>
+            </div>
+
+            <div class="form-group">
+                <label for="editStaffDepartment">Department</label>
+                <select id="editStaffDepartment" name="editStaffDepartment"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="editStaffRole">Role</label>
+                <select id="editStaffRole" name="editStaffRole"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="editStaffStatus">Status</label>
+                <select id="editStaffStatus" name="editStaffStatus">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Staff</button>
+        </form>
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin.js"></script>
+
+</body>
+</html>

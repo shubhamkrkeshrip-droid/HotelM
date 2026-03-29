@@ -1,0 +1,200 @@
+/* =========================
+   AUTH CONTAINER
+========================= */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px;
+}
+
+/* =========================
+   AUTH BOX
+========================= */
+.auth-box {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   HEADER
+========================= */
+.auth-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-header .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+.auth-header h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #222;
+}
+
+.auth-header p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* =========================
+   FORM GROUP
+========================= */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.15);
+}
+
+/* =========================
+   MOBILE GROUP
+========================= */
+.mobile-group {
+    display: flex;
+    gap: 10px;
+}
+
+.country-code {
+    width: 100px;
+}
+
+.mobile-input {
+    flex: 1;
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.checkbox input {
+    width: auto;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5a6fd8;
+}
+
+.btn-outline {
+    border: 1px solid #667eea;
+    color: #667eea;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #667eea;
+    color: white;
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* =========================
+   FOOTER TEXT
+========================= */
+.auth-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.auth-footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   SMALL TEXT
+========================= */
+small {
+    font-size: 12px;
+    color: #777;
+}
+
+/* =========================
+   ERROR & SUCCESS STATES
+========================= */
+.input-error {
+    border-color: red;
+}
+
+.input-success {
+    border-color: green;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+    .auth-box {
+        padding: 20px;
+    }
+}

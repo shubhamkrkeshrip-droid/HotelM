@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Grand Hotel</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/auth.css"> <!-- add this -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="auth-container">
+    <div class="auth-box">
+
+        <div class="auth-header">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-hotel"></i>
+                <span>Grand Hotel</span>
+            </a>
+            <h2>Create Account</h2>
+            <p>Register to book your dream stay</p>
+        </div>
+
+        <form id="registrationForm">
+
+            <div class="form-group">
+                <label for="fullName"><i class="fas fa-user"></i> Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- MOBILE FIXED -->
+            <div class="form-group">
+                <label for="mobile"><i class="fas fa-phone"></i> Mobile Number *</label>
+
+                <div class="mobile-group">
+                    <select id="countryCode" name="countryCode" class="country-code" aria-label="Country Code">
+                        <option value="+1">+1 (USA)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+91">+91 (India)</option>
+                        <option value="+61">+61 (Australia)</option>
+                        <option value="+971">+971 (UAE)</option>
+                    </select>
+
+                    <input type="tel" id="mobile" name="mobile" class="mobile-input" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gender"><i class="fas fa-venus-mars"></i> Gender</label>
+                <select id="gender" name="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age"><i class="fas fa-calendar"></i> Age</label>
+                <input type="number" id="age" name="age" min="18" max="120">
+            </div>
+
+            <div class="form-group">
+                <label for="address"><i class="fas fa-map-marker-alt"></i> Address *</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user-circle"></i> Username *</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password *</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword"><i class="fas fa-lock"></i> Confirm Password *</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    I agree to the <a href="#">Terms & Conditions</a>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="registerBtn" disabled>
+                Register
+            </button>
+
+            <p class="auth-footer">
+                Already have an account? <a href="../login.html">Login here</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/customer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Rooms - Grand Hotel</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel</span>
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="search-rooms.html" class="active">Book Room</a></li>
+                <li><a href="booking-history.html">My Bookings</a></li>
+                <li><a href="complaints.html">Register Complaint</a></li>
+                <li><a href="track-complaints.html">Track Complaints</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+    <div class="main-content">
+
+        <div class="search-section">
+            <h1>Find Your Perfect Room</h1>
+
+            <div class="search-card">
+                <form id="roomSearchForm">
+
+                    <!-- Dates -->
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="checkIn">Check-in Date *</label>
+                            <input type="date" id="checkIn" name="checkIn" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkOut">Check-out Date *</label>
+                            <input type="date" id="checkOut" name="checkOut" required>
+                        </div>
+
+                    </div>
+
+                    <!-- Guests -->
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="adults">Adults *</label>
+                            <input type="number" id="adults" name="adults" min="1" max="10" value="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="children">Children</label>
+                            <input type="number" id="children" name="children" min="0" max="5" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="roomType">Room Type</label>
+                            <select id="roomType" name="roomType">
+                                <option value="all">All Types</option>
+                                <option value="standard">Standard</option>
+                                <option value="deluxe">Deluxe</option>
+                                <option value="suite">Suite</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- Price -->
+                    <div class="form-group">
+                        <label for="priceRange">Price Range</label>
+
+                        <div class="price-range">
+                            <input type="range" id="priceRange" name="priceRange" min="0" max="500" step="10" value="500">
+                            <span>Max: $<span id="priceValue">500</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div class="form-group">
+                        <label>Amenities</label>
+
+                        <div class="amenities-checkbox">
+                            <label><input type="checkbox" name="amenities" value="Wi-Fi"> Wi-Fi</label>
+                            <label><input type="checkbox" name="amenities" value="TV"> TV</label>
+                            <label><input type="checkbox" name="amenities" value="AC"> AC</label>
+                            <label><input type="checkbox" name="amenities" value="Coffee Machine"> Coffee Machine</label>
+                            <label><input type="checkbox" name="amenities" value="Jacuzzi"> Jacuzzi</label>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <button type="submit" class="btn btn-primary btn-block" id="searchBtn">
+                        Search Rooms
+                    </button>
+
+                </form>
+            </div>
+
+            <div id="searchResults" class="search-results"></div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/booking.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Complaint - Grand Hotel</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="dashboard.html">
+                    <i class="fas fa-hotel"></i>
+                    <span>Grand Hotel</span>
+                </a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="search-rooms.html">Book Room</a></li>
+                <li><a href="booking-history.html">My Bookings</a></li>
+                <li><a href="complaints.html" class="active">Register Complaint</a></li>
+                <li><a href="track-complaints.html">Track Complaints</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+    <div class="main-content">
+
+        <div class="complaint-form-container">
+            <h1>Register a Complaint</h1>
+
+            <p class="info-note">
+                <i class="fas fa-info-circle"></i>
+                We aim to resolve all complaints within 24 hours
+            </p>
+
+            <div class="complaint-card">
+
+                <form id="complaintForm">
+
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="complaintCategory">
+                            <i class="fas fa-tag"></i> Complaint Category *
+                        </label>
+
+                        <select id="complaintCategory" name="complaintCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Room Issue">Room Issue</option>
+                            <option value="Service Issue">Service Issue</option>
+                            <option value="Billing Issue">Billing Issue</option>
+                            <option value="Housekeeping">Housekeeping</option>
+                            <option value="Food & Beverage">Food & Beverage</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Booking -->
+                    <div class="form-group">
+                        <label for="bookingId">
+                            <i class="fas fa-hashtag"></i> Booking ID
+                        </label>
+
+                        <select id="bookingId" name="bookingId">
+                            <option value="">Select a booking (optional)</option>
+                        </select>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label for="complaintTitle">
+                            <i class="fas fa-heading"></i> Complaint Title *
+                        </label>
+
+                        <input type="text" id="complaintTitle" name="complaintTitle"
+                               placeholder="Brief title of your complaint" required>
+
+                        <small>Minimum 10 characters, maximum 100 characters</small>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+                        <label for="complaintDescription">
+                            <i class="fas fa-align-left"></i> Description *
+                        </label>
+
+                        <textarea id="complaintDescription" name="complaintDescription"
+                                  rows="5"
+                                  placeholder="Please provide detailed description of your issue"
+                                  required></textarea>
+
+                        <small>Minimum 20 characters, maximum 500 characters</small>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-envelope"></i> Contact Preference *
+                        </label>
+
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="contactPreference" value="email" checked> Email
+                            </label>
+
+                            <label>
+                                <input type="radio" name="contactPreference" value="phone"> Phone Call
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="form-actions">
+                        <button type="button" onclick="resetComplaintForm()" class="btn btn-outline">
+                            Reset
+                        </button>
+
+                        <button type="submit" class="btn btn-primary">
+                            Submit Complaint
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/customer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Booking - Grand Hotel</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="modify-container">
+    <div class="modify-box">
+
+        <h1>Modify Booking</h1>
+        <div id="currentBooking"></div>
+
+        <form id="modifyForm">
+
+            <!-- Check-in -->
+            <div class="form-group">
+                <label for="newCheckIn">Check-in Date</label>
+                <input type="date" id="newCheckIn" name="newCheckIn" required>
+            </div>
+
+            <!-- Check-out -->
+            <div class="form-group">
+                <label for="newCheckOut">Check-out Date</label>
+                <input type="date" id="newCheckOut" name="newCheckOut" required>
+            </div>
+
+            <!-- Adults -->
+            <div class="form-group">
+                <label for="newAdults">Number of Adults</label>
+                <input type="number" id="newAdults" name="newAdults" min="1" max="10">
+            </div>
+
+            <!-- Children -->
+            <div class="form-group">
+                <label for="newChildren">Number of Children</label>
+                <input type="number" id="newChildren" name="newChildren" min="0" max="5">
+            </div>
+
+            <!-- Room Type -->
+            <div class="form-group">
+                <label for="newRoomType">Room Type</label>
+                <select id="newRoomType" name="newRoomType">
+                    <option value="Standard">Standard</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="Suite">Suite</option>
+                </select>
+            </div>
+
+            <!-- Price Difference -->
+            <div id="priceDifference" class="price-difference"></div>
+
+            <!-- Buttons -->
+            <div class="action-buttons">
+                <button type="submit" class="btn btn-primary">Confirm Changes</button>
+                <a href="booking-history.html" class="btn btn-outline">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script src="../js/validation.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookingId = urlParams.get('id');
+    const booking = storage.getBookingById(bookingId);
+    const currentUser = auth.getCurrentUser();
+
+    if (!booking || booking.userId !== currentUser.id) {
+        window.location.href = 'booking-history.html';
+    }
+
+    document.getElementById('currentBooking').innerHTML = `
+        <div class="current-details">
+            <h3>Current Booking Details</h3>
+            <p><strong>Booking ID:</strong> ${booking.bookingId}</p>
+            <p><strong>Room:</strong> ${booking.roomType}</p>
+            <p><strong>Check-in:</strong> ${formatDate(booking.checkIn)}</p>
+            <p><strong>Check-out:</strong> ${formatDate(booking.checkOut)}</p>
+            <p><strong>Total:</strong> ${formatCurrency(booking.totalAmount)}</p>
+        </div>
+    `;
+
+    document.getElementById('newCheckIn').value = booking.checkIn;
+    document.getElementById('newCheckOut').value = booking.checkOut;
+    document.getElementById('newAdults').value = booking.adults;
+    document.getElementById('newChildren').value = booking.children || 0;
+    document.getElementById('newRoomType').value = booking.roomType;
+
+    function calculatePriceDifference() {
+        const checkIn = document.getElementById('newCheckIn').value;
+        const checkOut = document.getElementById('newCheckOut').value;
+        const roomType = document.getElementById('newRoomType').value;
+
+        if (checkIn && checkOut) {
+            const nights = Math.ceil((new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24));
+
+            if (nights <= 0) return;
+
+            const roomPrices = { Standard: 99, Deluxe: 159, Suite: 299 };
+            const newTotal = roomPrices[roomType] * nights;
+            const difference = newTotal - booking.totalAmount;
+
+            const diffDiv = document.getElementById('priceDifference');
+
+            if (difference > 0) {
+                diffDiv.innerHTML = `<div class="alert alert-warning">Additional payment required: ${formatCurrency(difference)}</div>`;
+            } else if (difference < 0) {
+                diffDiv.innerHTML = `<div class="alert alert-success">Refund amount: ${formatCurrency(Math.abs(difference))}</div>`;
+            } else {
+                diffDiv.innerHTML = '';
+            }
+        }
+    }
+
+    document.getElementById('newCheckIn').addEventListener('change', calculatePriceDifference);
+    document.getElementById('newCheckOut').addEventListener('change', calculatePriceDifference);
+    document.getElementById('newRoomType').addEventListener('change', calculatePriceDifference);
+
+    document.getElementById('modifyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const newCheckIn = document.getElementById('newCheckIn').value;
+        const newCheckOut = document.getElementById('newCheckOut').value;
+
+        if (new Date(newCheckIn) < new Date()) {
+            showAlert('Check-in date cannot be in the past', 'error');
+            return;
+        }
+
+        if (new Date(newCheckOut) <= new Date(newCheckIn)) {
+            showAlert('Check-out must be after check-in', 'error');
+            return;
+        }
+
+        const nights = Math.ceil((new Date(newCheckOut) - new Date(newCheckIn)) / (1000 * 60 * 60 * 24));
+        const roomPrices = { Standard: 99, Deluxe: 159, Suite: 299 };
+
+        const newTotal = roomPrices[document.getElementById('newRoomType').value] * nights;
+
+        storage.updateBooking(bookingId, {
+            checkIn: newCheckIn,
+            checkOut: newCheckOut,
+            adults: document.getElementById('newAdults').value,
+            children: document.getElementById('newChildren').value,
+            roomType: document.getElementById('newRoomType').value,
+            totalAmount: newTotal,
+            modifiedAt: new Date().toISOString()
+        });
+
+        showAlert('Booking modified successfully!', 'success');
+
+        setTimeout(() => {
+            window.location.href = 'booking-history.html';
+        }, 1500);
+    });
+</script>
+
+</body>
+</html>

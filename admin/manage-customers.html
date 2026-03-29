@@ -1,0 +1,80 @@
+<!-- EDIT CUSTOMER MODAL -->
+<div id="editCustomerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h3>Edit Customer</h3>
+
+        <form id="editCustomerForm">
+            <input type="hidden" id="editCustomerId" name="editCustomerId">
+
+            <div class="form-group">
+                <label for="editName">Full Name</label>
+                <input type="text" id="editName" name="editName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="editEmail">Email</label>
+                <input type="email" id="editEmail" name="editEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="editAddress">Address</label>
+                <textarea id="editAddress" name="editAddress" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="editStatus">Account Status</label>
+                <select id="editStatus" name="editStatus">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Customer</button>
+        </form>
+    </div>
+</div>
+
+<!-- ADD CUSTOMER MODAL -->
+<div id="addCustomerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddModal()">&times;</span>
+        <h3>Add New Customer</h3>
+
+        <form id="addCustomerForm">
+
+            <div class="form-group">
+                <label for="newName">Full Name *</label>
+                <input type="text" id="newName" name="newName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newEmail">Email *</label>
+                <input type="email" id="newEmail" name="newEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newMobile">Mobile Number *</label>
+                <input type="tel" id="newMobile" name="newMobile" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newUsername">Username *</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newPassword">Password</label>
+                <input type="text" id="newPassword" name="newPassword" value="password123" readonly>
+                <small>Default password: password123</small>
+            </div>
+
+            <div class="form-group">
+                <label for="newAddress">Address</label>
+                <textarea id="newAddress" name="newAddress" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Customer</button>
+        </form>
+    </div>
+</div>

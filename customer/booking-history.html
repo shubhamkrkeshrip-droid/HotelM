@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History - Grand Hotel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/customer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="dashboard.html">
+                        <i class="fas fa-hotel"></i>
+                        <span>Grand Hotel</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="search-rooms.html">Book Room</a></li>
+                    <li><a href="booking-history.html" class="active">My Bookings</a></li>
+                    <li><a href="complaints.html">Register Complaint</a></li>
+                    <li><a href="track-complaints.html">Track Complaints</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button onclick="logout()" class="btn btn-outline">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="main-content">
+            <h1>My Booking History</h1>
+            
+            <div class="booking-tabs">
+                <button class="tab-btn active" onclick="showBookings('upcoming')">Upcoming Bookings</button>
+                <button class="tab-btn" onclick="showBookings('past')">Past Bookings</button>
+                <button class="tab-btn" onclick="showBookings('cancelled')">Cancelled Bookings</button>
+            </div>
+            
+            <div id="upcomingBookings" class="bookings-section active">
+                <h2>Upcoming Bookings</h2>
+                <div id="upcomingBookingsList" class="bookings-list"></div>
+            </div>
+            
+            <div id="pastBookings" class="bookings-section">
+                <h2>Past Bookings</h2>
+                <div id="pastBookingsList" class="bookings-list"></div>
+            </div>
+            
+            <div id="cancelledBookings" class="bookings-section">
+                <h2>Cancelled Bookings</h2>
+                <div id="cancelledBookingsList" class="bookings-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/validation.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/customer.js"></script>
+</body>
+</html>

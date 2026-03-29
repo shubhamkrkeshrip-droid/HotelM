@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Grand Hotel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="dashboard.html">
+                        <i class="fas fa-hotel"></i>
+                        <span>Grand Hotel Admin</span>
+                    </a>
+                </div>
+                <div class="nav-buttons">
+                    <span id="adminName"></span>
+                    <button onclick="logout()" class="btn btn-outline">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin Panel</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="manage-rooms.html"><i class="fas fa-bed"></i> Manage Rooms</a></li>
+                    <li><a href="manage-reservations.html"><i class="fas fa-calendar-check"></i> Manage Reservations</a></li>
+                    <li><a href="manage-customers.html"><i class="fas fa-users"></i> Manage Customers</a></li>
+                    <li><a href="manage-staff.html"><i class="fas fa-user-tie"></i> Manage Staff</a></li>
+                    <li><a href="manage-bills.html"><i class="fas fa-file-invoice-dollar"></i> Manage Bills</a></li>
+                    <li><a href="manage-complaints.html"><i class="fas fa-comment-dots"></i> Manage Complaints</a></li>
+                    <li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports & Analytics</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <div class="welcome-section">
+                <h1>Welcome, <span id="adminWelcomeName"></span>!</h1>
+                <p>Here's what's happening with your hotel today</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-bed"></i>
+                    <div class="stat-info">
+                        <h3 id="totalRooms">0</h3>
+                        <p>Total Rooms</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <div class="stat-info">
+                        <h3 id="todayBookings">0</h3>
+                        <p>Today's Bookings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-info">
+                        <h3 id="totalCustomers">0</h3>
+                        <p>Total Customers</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <div class="stat-info">
+                        <h3 id="monthlyRevenue">$0</h3>
+                        <p>Monthly Revenue</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>Booking Trends</h3>
+                    <canvas id="bookingChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Revenue Overview</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Recent Bookings</h2>
+                <div class="table-container">
+                    <table id="recentBookingsTable">
+                        <thead>
+                            <tr><th>Booking ID</th><th>Customer</th><th>Room</th><th>Check-in</th><th>Amount</th><th>Status</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/validation.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
